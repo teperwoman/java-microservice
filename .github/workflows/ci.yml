@@ -34,7 +34,7 @@ jobs:
           context: ./
           file: ./Dockerfile
           push: true
-          tags: teperwoman/java-microservice:latest
+          tags: tftest/java-microservice:latest
 
       - name: Image digest
         run: echo ${{ steps.docker_build.outputs.digest }}
