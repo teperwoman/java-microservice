@@ -49,3 +49,13 @@ jobs:
       - name: Get EKS config file
         run: |
           aws eks update-kubeconfig --name tf-test
+
+      - name: "Create deployment"
+        uses: aws-actions/apply@master
+        with:
+          manifest: kubernetes/deployment.yaml
+
+      - name: "Create service"
+        uses: aws-actions/apply@master
+        with:
+          manifest: kubernetes/service.yaml
