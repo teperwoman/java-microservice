@@ -50,12 +50,11 @@ jobs:
         run: |
           aws eks update-kubeconfig --name tf-test
 
-      - name: "Create deployment"
-        uses: okteto/apply@master
+      - name: Apply Kubernetes manifests
+        uses: ianbelcher/eks-kubectl-action@master
         with:
-          manifest: kubernetes/deployment.yaml
-
-      - name: "Create service"
-        uses: okteto/apply@master
-        with:
-          manifest: kubernetes/service.yaml
+          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+          aws_region: us-east-1
+          cluster_name: tf-test
+          args: apply -f kubernetes/
