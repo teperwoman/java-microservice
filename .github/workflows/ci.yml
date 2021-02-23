@@ -59,11 +59,12 @@ jobs:
         run: |
           aws eks update-kubeconfig --name tf-test
 
-      - name: Apply Kubernetes manifests
-        uses: ianbelcher/eks-kubectl-action@master
+
+      - uses: Azure/k8s-deploy@v1.3
         with:
-          aws_access_key_id: ${{ secrets.AWS_ACCESS_KEY_ID }}
-          aws_secret_access_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          aws_region: us-east-1
-          cluster_name: tf-test
-          args: apply -f kubernetes/
+          namespace: 'default'
+          manifests: |
+              kubernetes/deployment.yaml
+              kubernetes/service.yaml
+          images: 'teperwoman/java-microservice:${{ github.sha }}'
+          kubectl-version: 'latest'
