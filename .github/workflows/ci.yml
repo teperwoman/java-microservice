@@ -67,5 +67,5 @@ jobs:
           manifests: |
               kubernetes/deployment.yaml
               kubernetes/service.yaml
-          images: 'teperwoman/java-microservice:${{ github.sha }}'
+          images: 'tftest/java-microservice:${{ github.sha }}'
           kubectl-version: 'latest'
