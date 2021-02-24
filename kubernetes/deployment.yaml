@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: java-microservice
-        image: teperwoman/java-microservice
+        image: tftest/java-microservice
         ports:
         - containerPort: 8080
