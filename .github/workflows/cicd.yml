@@ -65,7 +65,6 @@ jobs:
         with:
           namespace: 'java-microservice'
           manifests: |
-              kubernetes/deployment.yaml
-              kubernetes/service.yaml
+              kubernetes/all-in-one.yaml
           images: 'tftest/java-microservice:${{ github.sha }}'
           kubectl-version: 'latest'
